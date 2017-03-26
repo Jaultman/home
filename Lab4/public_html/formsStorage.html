@@ -1,0 +1,216 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Lab 4A</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
+        <style>
+            body{
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Comp10133: Lab4A: Forms and Local Storage</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <h1 id="javascriptDetect">Please turn on Javascript</h1>
+
+        <div id="message" class="bg-success"></div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 id="onLineDetect">Network Status: <span class="bg-danger">offline</span></h3>
+                </div>
+                <div class="col-md-6">
+                    <h3 id="localStorageDetect">Local Storage: <span class="bg-danger">unavailable</span></h3>
+                </div>
+                <div class="col-md-4">
+                    <button id="saveValuesToLocalStorage" class="btn btn-info btn-block">Save Form Values to Local Storage</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="clearFormAndLocalStorage" class="btn btn-danger btn-block">Clear Local Storage and Form</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="loadValuesFromLocalStorage" class="btn btn-primary btn-block">Load Form Values from Local Storage</button>
+                </div>
+            </div>
+            <br/>
+
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="username">Name:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="username" 
+                               pattern="[a-zA-Z]*" 
+                               title="upper or lowercase letters only" 
+                               type="text" 
+                               class="form-control"
+                               placeholder="First and Last Name"
+                               required>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bg-danger" id="requiredDetect">Required attribute NOT supported</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="date">Date of birth:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="date" type="date" max="1999-01-01" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bg-danger" id="dateDetect" placeholder="Date of Birth(mm/dd/yyyy)">Date type NOT supported</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="email">Email:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="email" type="email" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bg-danger" id="emailDetect">Email type NOT supported</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="age">Age:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="age" type="number" min="18" max="90" class="form-control" placeholder="Your age (18-90)">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bg-danger" id="birthDetect">Number type NOT supported</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label for="postal">Cdn Postal Code:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input id="postal" type="text" class="form-control" placeholder="Cdn Postal Code">
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bg-danger" id="postalDetect">Pattern attribute NOT supported</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label>Interests:</label>
+                    </div>
+                    <div class="col-md-4">
+                        Music <input id="music" type="checkbox">
+                        Software <input id="software" type="checkbox">
+                        Hardware <input id="hardware" type="checkbox">
+                    </div> 
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label>Gender:</label>
+                    </div>
+                    <div class="col-md-4">
+                        Male <input id="male" name="gender" value="male" type="radio">
+                        Female <input id="female" name="gender" value="female" type="radio">
+                    </div> 
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4 control-label">
+                        <label>Province:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select multiple class="form-control" id="provinces">
+                            <option value="#" id="#">-- Select a Province --</option>
+                            <option value="AL" id="AL">Alberta</option>
+                            <option value="BC" id="BC">British Columbia</option>
+                            <option value="MT" id="MT">Manitoba</option>
+                            <option value="NB" id="NB">New Brunswick</option>
+                            <option value="NL" id="NL">Newfoundland and Labrador</option> 
+                            <option value="NT" id="NT">Northwest Territories</option>
+                            <option value="NS" id="NS">Nova Scotia</option>    
+                            <option value="NU" id="NU">Nunavut</option>
+                            <option value="ON" id="ON">Ontario</option>
+                            <option value="PE" id="PE">Prince Edward Island</option>                    
+                            <option value="QC" id="QC">Quebec</option>                    
+                            <option value="SK" id="SK">Saskatchewan</option>
+                            <option value="YT" id="YT">Yukon Territories</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <input type="submit" id="submit" class="btn btn-default">
+                    <a href="index.html"><button type="button" class="btn btn-default">Reload Page</button></a>
+                    <span id="populateFields" class="glyphicon glyphicon-floppy-open"></span>
+                </div>
+            </form>
+
+            <hr>
+            <footer>
+                <p>Jared Aultman</p>
+            </footer>
+        </div> <!-- /container -->        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function (b, o, i, l, e, r) {
+                b.GoogleAnalyticsObject = l;
+                b[l] || (b[l] =
+                        function () {
+                            (b[l].q = b[l].q || []).push(arguments)
+                        });
+                b[l].l = +new Date;
+                e = o.createElement(i);
+                r = o.getElementsByTagName(i)[0];
+                e.src = '//www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+            ga('create', 'UA-XXXXX-X', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
